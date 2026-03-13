@@ -118,7 +118,7 @@ vidyamitra/
 ## 1️⃣ Clone the Repository
 
 ```
-git clone https://github.com/YOUR_USERNAME/Vidyamitra_Resume_Analyser.git
+git clone https://github.com/Chandrabhan-Choudhary/Vidyamitra_Resume_Analyser
 cd Vidyamitra_Resume_Analyser
 ```
 
