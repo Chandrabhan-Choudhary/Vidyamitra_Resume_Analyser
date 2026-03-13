@@ -1,82 +1,227 @@
-## VidyaMitra – Intelligent Career Agent
+# 🚀 VidyaMitra – AI Resume Analyzer & Career Assistant
 
-VidyaMitra is an AI-powered career assistant that helps students and professionals with **resume evaluation**, **mock interviews**, and **personalized career roadmaps** using a modern full‑stack architecture (React.js + FastAPI).
+VidyaMitra is an **AI-powered career assistant** that helps students and professionals improve their resumes, identify skill gaps, and explore career opportunities.
 
-### Features
+The platform allows users to **upload their resume as a PDF**, analyze it using AI models, and receive structured feedback such as strengths, weaknesses, missing skills, and career suggestions.
 
-- **Personalized Resume Evaluation**: Upload a resume (PDF/TXT) and get structured feedback and skill gap hints.
-- **AI-Driven Mock Interviews**: Simulated interview Q&A with feedback on answers (initially rule-based / stubbed, ready to plug into LLMs).
-- **Career Path & Upskilling Planner**: High‑level recommendations for skills, courses, and next steps based on your current profile.
+---
 
-### Tech Stack
+# ✨ Features
 
-- **Frontend**: React.js single-page application (SPA) in `frontend/`
-- **Backend**: FastAPI application in `backend/`
-- **API Style**: JSON REST over HTTPS
+### 📄 AI Resume Analyzer
 
-### Local Development
+Upload a **PDF resume** and receive:
 
-#### 1. Backend (FastAPI)
+* Resume strengths
+* Weaknesses
+* Missing skills
+* Career recommendations
 
-From the `backend` folder:
+### 🎯 Career Guidance
 
-```bash
+Users can input their skills to get **AI-powered career suggestions** and learning paths.
+
+### 🤖 Multi-LLM Support
+
+The backend supports multiple AI providers:
+
+* **Google Gemini**
+* **OpenAI**
+
+### ☁️ Cloud Database
+
+Uses **Supabase** for secure cloud storage and real-time synchronization.
+
+### 📚 Learning Resource Integration
+
+External APIs provide:
+
+* YouTube learning resources
+* Visual learning content (Pexels API)
+
+---
+
+# 🏗 System Architecture
+
+```
+User
+  ↓
+React Frontend
+  ↓
+FastAPI Backend
+  ↓
+PDF Resume Parsing (PyMuPDF)
+  ↓
+AI Processing (Gemini / OpenAI)
+  ↓
+Career Insights & Recommendations
+```
+
+---
+
+# 🧠 Tech Stack
+
+## Frontend
+
+* React.js
+* Axios
+* CSS
+
+## Backend
+
+* FastAPI
+* Python
+
+## AI Services
+
+* Google Gemini API
+* OpenAI API
+
+## Database
+
+* Supabase
+
+## Additional Libraries
+
+* PyMuPDF (PDF parsing)
+* python-multipart (file upload handling)
+* python-dotenv
+
+---
+
+# 📂 Project Structure
+
+```
+vidyamitra/
+│
+├── backend/
+│   ├── main.py
+│   ├── routers/
+│   ├── services/
+│   ├── database/
+│   ├── models/
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── src/
+│   ├── public/
+│   └── package.json
+│
+├── .gitignore
+└── README.md
+```
+
+---
+
+# ⚙️ Installation & Setup
+
+## 1️⃣ Clone the Repository
+
+```
+git clone https://github.com/YOUR_USERNAME/Vidyamitra_Resume_Analyser.git
+cd Vidyamitra_Resume_Analyser
+```
+
+---
+
+# 2️⃣ Backend Setup (FastAPI)
+
+```
+cd backend
+
 python -m venv .venv
-# On Windows PowerShell
-.venv\\Scripts\\Activate.ps1
+
+# Windows
+.venv\Scripts\activate
 
 pip install -r requirements.txt
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-The API will be available at `http://localhost:8000` and the interactive docs at `http://localhost:8000/docs`.
+Start backend server:
 
-Optional Gemini integration for testing (no OpenAI key required):
-
-- Get a free Gemini API key from Google AI Studio.
-- Set the environment variables before starting Uvicorn:
-
-```bash
-set GEMINI_API_KEY=your_key_here         # PowerShell: $env:GEMINI_API_KEY="your_key_here"
-set GEMINI_MODEL=gemini-3-flash-preview  # optional, default shown
+```
+uvicorn main:app --reload
 ```
 
-When `GEMINI_API_KEY` is set, the backend will:
+Backend will run at:
 
-- Add `llm_summary` to `/api/resume/evaluate` responses.
-- Add `llm_note` to `/api/career/recommend` responses.
-- Add `llm_feedback` to `/api/interview/answer` responses.
+```
+http://localhost:8000
+```
 
-#### 2. Frontend (React)
+API documentation:
 
-From the `frontend` folder:
+```
+http://localhost:8000/docs
+```
 
-```bash
+---
+
+# 3️⃣ Frontend Setup (React)
+
+```
+cd frontend
+
 npm install
-npm run dev
+npm start
 ```
 
-The frontend dev server will run at `http://localhost:5173` (or similar). By default it expects the backend at `http://localhost:8000`; this can be configured via environment variable `VITE_API_BASE_URL`.
+Frontend runs at:
 
-### High-Level Architecture
+```
+http://localhost:3000
+```
 
-- Users access the **React** frontend, which provides dashboards for:
-  - Resume upload & insights
-  - Mock interview interface
-  - Career path and upskilling roadmap
-- The frontend calls the **FastAPI** backend for:
-  - Resume analysis (`/api/resume/evaluate`)
-  - Mock interview generation (`/api/interview/start`, `/api/interview/answer`)
-  - Career recommendation (`/api/career/recommend`)
-- AI/ML logic can be implemented behind these endpoints or delegated to external LLM APIs.
+---
 
-### Production / Demo Setup (Overview)
+# 🔑 Environment Variables
 
-- Deploy **backend** (FastAPI) to a PaaS such as Render/Railway with:
-  - `requirements.txt`
-  - Start command: `uvicorn main:app --host 0.0.0.0 --port 8000`
-- Deploy **frontend** (React) to Vercel/Netlify:
-  - Build: `npm run build`
-  - Output: `dist/`
-  - Environment variable `VITE_API_BASE_URL` pointing to the deployed FastAPI base URL.
+Create a `.env` file inside `backend/`:
 
+```
+AI_PROVIDER=gemini
+
+OPENAI_API_KEY=your_openai_key
+GEMINI_API_KEY=your_gemini_key
+
+SUPABASE_URL=your_supabase_url
+SUPABASE_KEY=your_supabase_key
+
+YOUTUBE_API_KEY=your_youtube_key
+PEXELS_API_KEY=your_pexels_key
+```
+
+---
+
+# 🧪 API Endpoints
+
+| Endpoint           | Description                   |
+| ------------------ | ----------------------------- |
+| `/auth/register`   | Register new user             |
+| `/auth/login`      | Login user                    |
+| `/resume-analysis` | Upload and analyze resume PDF |
+| `/career-advice`   | Get career recommendations    |
+
+---
+
+# 🔮 Future Improvements
+
+* Resume **ATS scoring system**
+* AI **mock interview trainer**
+* Skill gap detection dashboard
+* Multi-agent career planning system
+
+---
+
+# 👨‍💻 Contributors
+
+* Chandrabhan Choudhary – Team Lead
+* Vinayak Sen
+* Amber Gupta
+* Anupam Agrawal
+
+---
+
+# 📜 License
+
+This project is developed for **educational and research purposes**.
