@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+python-dotenv
+pydantic
+email-validator
+
+openai
+
+google-generativeai
+
+supabase
+
+requests
+
+pymupdf
+
+python-multipart

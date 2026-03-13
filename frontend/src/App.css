@@ -1,0 +1,130 @@
+/* Global Reset */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* Body Styling */
+body{
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background:#f5f7fb;
+  color:#1f2937;
+}
+
+/* Main Container */
+.app{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+/* Header Section */
+.header{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.header h1{
+  font-size:32px;
+  font-weight:700;
+  color:#2563eb;
+}
+
+.header p{
+  margin-top:10px;
+  font-size:16px;
+  color:#6b7280;
+}
+
+/* Grid Layout */
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+/* Card Layout */
+.card{
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  transition:all 0.2s ease;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* Section Titles */
+.card h2{
+  margin-bottom:15px;
+  font-size:20px;
+  color:#111827;
+}
+
+/* Inputs */
+input, textarea{
+  width:100%;
+  padding:12px;
+  border-radius:8px;
+  border:1px solid #d1d5db;
+  font-size:14px;
+  margin-top:8px;
+  margin-bottom:15px;
+  outline:none;
+  transition:border 0.2s;
+}
+
+input:focus, textarea:focus{
+  border-color:#2563eb;
+}
+
+/* Buttons */
+button{
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:12px 18px;
+  border-radius:8px;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all 0.2s ease;
+}
+
+button:hover{
+  background:#1e40af;
+  transform:translateY(-1px);
+}
+
+/* Output Box */
+pre{
+  background:#f3f4f6;
+  padding:15px;
+  border-radius:8px;
+  margin-top:15px;
+  white-space:pre-wrap;
+  font-size:14px;
+}
+
+/* Dashboard Text */
+.card p{
+  color:#4b5563;
+  line-height:1.5;
+}
+
+/* Responsive Layout */
+@media (max-width:800px){
+
+.grid{
+  grid-template-columns:1fr;
+}
+
+.header h1{
+  font-size:26px;
+}
+
+}

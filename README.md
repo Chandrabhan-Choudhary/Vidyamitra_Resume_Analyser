@@ -31,6 +31,22 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 The API will be available at `http://localhost:8000` and the interactive docs at `http://localhost:8000/docs`.
 
+Optional Gemini integration for testing (no OpenAI key required):
+
+- Get a free Gemini API key from Google AI Studio.
+- Set the environment variables before starting Uvicorn:
+
+```bash
+set GEMINI_API_KEY=your_key_here         # PowerShell: $env:GEMINI_API_KEY="your_key_here"
+set GEMINI_MODEL=gemini-3-flash-preview  # optional, default shown
+```
+
+When `GEMINI_API_KEY` is set, the backend will:
+
+- Add `llm_summary` to `/api/resume/evaluate` responses.
+- Add `llm_note` to `/api/career/recommend` responses.
+- Add `llm_feedback` to `/api/interview/answer` responses.
+
 #### 2. Frontend (React)
 
 From the `frontend` folder:
